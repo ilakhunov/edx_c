@@ -29,21 +29,43 @@ void grToLbs(double gr);
 void celToFahr(double cel);
 
 int main (){
-    int num;
+    int num, i;
+    double metrics=0;
+    char mChar;
     scanf("%d", &num);
-    //metrToFt(num);
-    grToLbs(num);
+    i=0;
+    while(i<num)
+    {
+        scanf("%lf %c", &metrics, &mChar);
+        if (mChar == 'm'){
+            metrToFt(metrics);
+        }
+        else if (mChar == 'g') 
+        {
+            grToLbs(metrics);
+        }
+        else if (mChar == 'c')
+        {
+            celToFahr(metrics);
+        }
+        i++;
+    }
+    
     return 0;
 }
 
 void metrToFt(double metr)
 {   
    double ft = metr*3.2808;
-   printf("%lf",ft);
+   printf("%lf ft\n",ft);
 }
 void grToLbs(double gr)
 {
     double lbs= gr*0.002205;
-    printf("%.6lf", lbs);
+    printf("%.6lf lbs\n", lbs);
 }
-//void celToFahr(double cel)
+void celToFahr(double cel)
+{
+    double fahr = 32 + (1.8 * cel);
+    printf("%.6lf f\n", fahr);
+}
